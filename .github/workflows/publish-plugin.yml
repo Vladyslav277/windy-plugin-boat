@@ -1,0 +1,24 @@
+name: Publish Windy Plugin
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install windy publisher
+        run: npm install -g @windy/publish-plugin
+
+      - name: Publish plugin
+        run: publish-plugin
+        env:
+          WINDY_API_KEY: ${{ secrets.WINDY_API_KEY }}
