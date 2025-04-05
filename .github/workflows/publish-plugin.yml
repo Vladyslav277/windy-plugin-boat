@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install windy publisher
-        run: npm install -g @windy/publish-plugin
+      - name: Install publish-plugin from GitHub
+        run: npm install -g windycom/publish-plugin
 
       - name: Publish plugin
         run: publish-plugin
